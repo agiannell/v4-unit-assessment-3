@@ -27,6 +27,7 @@ h1 {
   font-size: x-large;
   margin-bottom: 15px;
   font-weight: bolder;
+  text-decoration-line: underline;
 }
 
 h3 {
@@ -46,6 +47,16 @@ h3 {
   box-sizing: border-box;
 }
 
+.hidden-button {
+  background-color: transparent;
+  color: transparent;
+}
+
+.hidden-button:hover {
+  background-color: transparent;
+  color: transparent;
+}
+
 form {
   /* border: 2px dotted rebeccapurple; */
   width: 600px;
@@ -61,6 +72,12 @@ button {
   padding: 10px;
   font-family: 'Comfortaa', cursive;
   box-sizing: border-box;
+  transition: background-color .14s;
+}
+
+button:hover {
+  background-color: #50bdbb;
+  
 }
 
 input {
@@ -79,12 +96,13 @@ input {
 
 }
 
-.shelf {
+.book-list {
   /* border: 2px dotted fuchsia; */
   border-right: 2px solid #107a78;
   width: 75%;
   display: flex;
   flex-wrap: wrap;
+  overflow: scroll;
   padding: 20px;
   justify-content: space-evenly;
   font-family: 'Comfortaa', cursive;
@@ -92,7 +110,7 @@ input {
   box-sizing: border-box;
 }
 
-.book-list {
+.shelf {
   /* border: 2px dotted cyan; */
   width: 25%;
   padding: 10px;
@@ -101,8 +119,10 @@ input {
 
 .book-info {
   /* border: 2px dotted red; */
-  width: 170px;
-  height: 250px;
+  width: 11vw;
+  min-width: 130px;
+  height: 17vw;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -119,5 +139,5 @@ input {
 
 .book-info span {
   margin-top: 10px;
-  font-size: small;
+  font-size: .65em;
 }

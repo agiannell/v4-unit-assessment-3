@@ -30,8 +30,16 @@ class SearchBar extends Component {
     }
 
     render() {
-        console.log(this.props)
-        console.log(this.state.userInput)
+        // console.log(this.props)
+        // console.log(this.state.userInput)
+
+        let clearButton;
+
+        if (!this.state.userInput) {
+            clearButton = <button className='hidden-button' onClick={this.handleClear}>clear search</button>
+        } else {
+            clearButton = <button onClick={this.handleClear}>clear search</button>
+        }
         return (
             <section className="search-bar">
                 <form>
@@ -42,7 +50,7 @@ class SearchBar extends Component {
                         onChange={e => this.handleChange(e.target.value)}
                     />
                     <button onClick={this.handleClick}>search</button>
-                    <button onClick={this.handleClear}>clear search</button>
+                    {clearButton}
                 </form>
             </section>
         )

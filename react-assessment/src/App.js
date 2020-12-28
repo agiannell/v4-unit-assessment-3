@@ -16,9 +16,6 @@ class App extends Component {
   }
 
   addToShelf = title => {
-    // const shelfCopy = this.state.shelf.slice();
-    // shelfCopy.push(title);
-
     const shelfCopy = [...this.state.shelf, title]
 
     this.setState({
@@ -34,9 +31,18 @@ class App extends Component {
   }
 
   filterBooks = userInput => {
-    let filteredBooks = this.state.books
+    let lowerCaseInput = userInput.toLowerCase();
+    let lowerCaseBooks = this.state.books.map(e => {
+      return {
+        id: e.id,
+        title: e.title.toLowerCase(),
+        author: e.author.toLowerCase(),
+        img: e.img
+      }
+    })
+    let filteredBooks = lowerCaseBooks
       .filter((el, i) => {
-        return el.title.includes(userInput)
+        return el.title.includes(lowerCaseInput) || el.author.includes(lowerCaseInput)
       })
 
     this.setState({
@@ -52,7 +58,7 @@ class App extends Component {
   
   render() {
     const {books, shelf} = this.state
-    console.log(shelf)
+    // console.log(shelf)
 
     return (
       <section className="App">
@@ -64,6 +70,7 @@ class App extends Component {
         <div className="content">
           <BookList
             books={books}
+            shelf={shelf}
             addToShelf={this.addToShelf}
           />
           <Shelf 
